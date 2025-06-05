@@ -441,4 +441,4 @@ cryptobot.infinity_polling
 Thread(target=bot.infinity_polling).start()
 Thread(target=cryptobot.infinity_polling).start()
 Thread(target=giveawaybot.infinity_polling).start()
-run(app, host="0.0.0.0", port=80, ssl_certfile="sert.pem", ssl_keyfile="key.pem")
+run(app, host="0.0.0.0", port=443)
