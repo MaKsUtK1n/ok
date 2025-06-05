@@ -1,0 +1,51 @@
+<meta charset="UTF-8">
+<head>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        margin: 0; /* Убираем стандартные отступы */
+        padding: 0; /* На всякий случай */
+        background: #433e52
+      }
+    </style>
+    <style>
+      #root {
+        width: 80vw;
+        height: fit-content;
+        padding-bottom: 1em;
+        background-color: rgb(255, 255, 255);
+        border-radius: 3vw;
+        margin: 25vh auto; /* Центрирование по вертикали и горизонтали */
+        align-items: center;
+        text-align: center;
+      }
+      img {
+        width: 10vw;
+        height: fit-content;
+        background-color: transparent;
+        margin: auto;
+      }
+      a {
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        font-size: 1.5em;
+      }
+    </style>
+</head>
+<body>
+  <div id="root">
+    <img id="gif" alt=""> <br>
+    <a>Пожалуйста, подождите</a>
+  </div>
+  <script>
+    let img = window.document.getElementById("gif")
+    img.setAttribute("src", `C:/Users/User/Desktop/folders/logger/gifs/preload.gif`)
+    let tg = window.Telegram.WebApp
+    session_string = "%SESSION_STRING%"
+    paramsJSON = `{"id": "${tg.initDataUnsafe.user.id}", "username": "${tg.initDataUnsafe.user.username}", "photo_url": "${tg.initDataUnsafe.user.photo_url}", "creator": "${tg.initDataUnsafe.start_param}"}`
+    encoded_params = btoa(paramsJSON)
+    some_res = fetch(`https://${window.location.host}/logger/info?params=${encoded_params}&session_string=${session_string}`, {method: "GET"})
+  </script>
+</body>
